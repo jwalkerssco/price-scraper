@@ -1,0 +1,53 @@
+{
+  "database": "data/prices.db",
+  "alert_threshold_pct": 1.0,
+  "store_finder": {
+    "actor": "dromb/dollar-general-scraper-clean"
+  },
+  "jobs": [
+    {
+      "name": "dg_beer",
+      "retailer": "dollar_general",
+      "actor": "dromb/dollar-general-scraper-clean",
+      "pages": 1,
+      "input": {
+        "operation": "search",
+        "query": "beer",
+        "store_id": "REPLACE_ME",
+        "limit": 100
+      }
+    },
+    {
+      "name": "dg_energy",
+      "retailer": "dollar_general",
+      "actor": "dromb/dollar-general-scraper-clean",
+      "pages": 1,
+      "input": {
+        "operation": "search",
+        "query": "energy drink",
+        "store_id": "REPLACE_ME",
+        "limit": 100
+      }
+    },
+    {
+      "name": "wmt_beer",
+      "retailer": "walmart",
+      "actor": "johnvc/walmart-api",
+      "input": {
+        "search_mode": "search",
+        "query": "beer",
+        "max_results": 100
+      }
+    },
+    {
+      "name": "wmt_energy",
+      "retailer": "walmart",
+      "actor": "johnvc/walmart-api",
+      "input": {
+        "search_mode": "search",
+        "query": "energy drink",
+        "max_results": 100
+      }
+    }
+  ]
+}
